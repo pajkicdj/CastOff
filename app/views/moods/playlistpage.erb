@@ -1,0 +1,22 @@
+<div class="playlistpagemain"> 
+  <%= erb(:'moods/playlists', { locals: { playlist: @playlist}}) %>
+
+  <div class="featured_playlists">
+    <div class="row large-up-2 text-center">
+      <% @playlist.podcasts.each do |podcast| %>
+        <div class="feat">
+          <%= erb(:'moods/podcasts', {locals: {podcast: podcast}}) %>
+          <div class="playinfo">
+              <li>Total Plays: <%= podcast.clicks.count%></li>
+              <li>Your Plays: <%= current_user.clicks.where(podcast_id: podcast.id).count %>
+              </li>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> 
+
+
+
+
